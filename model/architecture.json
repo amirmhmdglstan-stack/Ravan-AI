@@ -1,0 +1,16 @@
+{
+  "model_name": "Ravan-AI Scratch GPT-2 Micro (experimental)",
+  "architecture": "GPT-2 decoder-only Transformer, standard Hugging Face GPT2LMHeadModel implementation, native llama.cpp GPT-2 GGUF support",
+  "initialization": "Fresh GPT-2 config; all learned parameters randomly initialized by PyTorch with seed 20261024. No pretrained model weights or tokenizer used.",
+  "parameters": 875264,
+  "layers": 4,
+  "hidden_size": 128,
+  "attention_heads": 4,
+  "sequence_length": 128,
+  "trained_bpe_vocab_size": 512,
+  "embedding_tying": true,
+  "normalization": "LayerNorm",
+  "training_dtype": "float32",
+  "inference_formats": ["Hugging Face SafeTensors", "GGUF F16", "GGUF Q4_0"],
+  "known_limitations": ["Extremely small and undertrained", "Only a small project-authored corpus", "Poor generative language quality; not a useful or reliable assistant", "No human-reviewed benchmark", "Target Windows runtime not included in this checkout"]
+}

@@ -1,0 +1,72 @@
+{
+  "note": "Tiny internal diagnostic; not a human-rated benchmark. Validation data is project-authored and held out by pair/document; very small.",
+  "instruction_validation_comparison": {
+    "pretrain": {
+      "tokens": 993,
+      "nll": 5.2380032419318034,
+      "perplexity": 188.29374972413115
+    },
+    "sft": {
+      "tokens": 993,
+      "nll": 5.09726493044082,
+      "perplexity": 163.5739089068658
+    }
+  },
+  "samples": [
+    {
+      "category": "iranian_casual",
+      "prompt": "سلام، خوبی؟ امروزت چطور بود؟",
+      "answer": ""
+    },
+    {
+      "category": "persian_explain",
+      "prompt": "فرق آب‌وهوا و هوا چیه؟",
+      "answer": ""
+    },
+    {
+      "category": "persian_grammar",
+      "prompt": "در نوشتار معیار، می خواهم را چطور می‌نویسیم؟",
+      "answer": ""
+    },
+    {
+      "category": "english_conversation",
+      "prompt": "Hi! What do you like to do in your free time?",
+      "answer": ""
+    },
+    {
+      "category": "translation",
+      "prompt": "ترجمه‌ی طبیعی «دلم برایت تنگ شده» به انگلیسی چیه؟",
+      "answer": ""
+    },
+    {
+      "category": "school_math",
+      "prompt": "اگر ۴۰ تا از ۵۰ سؤال را درست جواب بدهم، چند درصد می‌شود؟",
+      "answer": ""
+    },
+    {
+      "category": "science",
+      "prompt": "چرا آسمان در روز معمولاً آبی دیده می‌شود؟",
+      "answer": ""
+    },
+    {
+      "category": "creative",
+      "prompt": "یک داستان دو جمله‌ای درباره‌ی یک گربه و ماه بنویس.",
+      "answer": ""
+    },
+    {
+      "category": "reasoning",
+      "prompt": "آیا همبستگی به‌تنهایی ثابت می‌کند یک چیز علت چیز دیگر است؟",
+      "answer": ""
+    },
+    {
+      "category": "uncertainty",
+      "prompt": "پایتخت کشور خیالی زارمان چیست؟",
+      "answer": ""
+    },
+    {
+      "category": "context",
+      "prompt": "سلام، اسم من نازنین است.\n<|assistant|>\nسلام نازنین!\n<|user|>\nاسم من چی بود؟",
+      "answer": "‌ ملهی‌ ملهی‌ ملهی‌ ملهی‌ ملهی‌ ملهی‌ ملهی‌ ملهی‌ ملهی‌"
+    }
+  ]
+}

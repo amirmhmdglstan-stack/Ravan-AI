@@ -1,0 +1,12 @@
+{
+  "raw_paragraphs": 39,
+  "duplicate_paragraphs": 0,
+  "unique_pretrain_documents": 39,
+  "pretrain_train_documents": 35,
+  "pretrain_validation_documents": 4,
+  "instruction_pairs": 39,
+  "instruction_train_pairs": 31,
+  "instruction_validation_pairs": 8,
+  "train_chars": 8140,
+  "validation_chars": 891
+}
