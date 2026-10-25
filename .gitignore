@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+model/checkpoint-*/
+model/*/optimizer.pt
+model/exp_*/
+model/pretrain_v2/
+model/sft_v2/
+model/tok_v2/
+*.pt
+data_raw/
+*.zip
+data/processed/corpus_train.jsonl
+data/processed/corpus_valid.jsonl
+data/processed/corpus_toksample.txt

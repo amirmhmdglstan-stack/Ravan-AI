@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-24",
+  "sandbox": {
+    "logical_cpus": 2,
+    "ram_visible_gib": 3.8,
+    "free_disk_gib_at_start": 20,
+    "cuda_available": false,
+    "cpu_reported": "Intel Xeon Processor @ 2.60GHz",
+    "python": "3.11.2"
+  },
+  "target_user_reported": {
+    "cpu": "Intel Pentium G3250, 2 cores, 3.20 GHz",
+    "ram_gib": 4,
+    "reported_vram_mib": 113,
+    "os": "Windows 11"
+  },
+  "intel_ark_target_instruction_set_extensions": ["SSE4.1", "SSE4.2"],
+  "notes": ["The sandbox hardware is not the target PC.", "No CUDA training was possible.", "Windows runtime and target-PC performance were not tested."]
+}

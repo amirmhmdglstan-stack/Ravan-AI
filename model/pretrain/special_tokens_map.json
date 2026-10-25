@@ -1,0 +1,10 @@
+{
+  "additional_special_tokens": [
+    "<|user|>",
+    "<|assistant|>"
+  ],
+  "bos_token": "<|endoftext|>",
+  "eos_token": "<|end|>",
+  "pad_token": "[UNK]",
+  "unk_token": "[UNK]"
+}
