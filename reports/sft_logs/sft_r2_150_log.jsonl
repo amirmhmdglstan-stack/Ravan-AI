@@ -1,0 +1,16 @@
+{"step": 1, "train_loss": 5.3499, "val_loss": 5.7083, "val_ppl": 301.35, "lr": 5e-06, "elapsed": 1.5, "tokens_processed": 1024}
+{"step": 10, "train_loss": 5.2966, "val_loss": 5.4318, "val_ppl": 228.57, "lr": 5e-05, "elapsed": 8.1, "tokens_processed": 10240}
+{"step": 20, "train_loss": 4.7568, "val_loss": 5.1879, "val_ppl": 179.08, "lr": 0.0001, "elapsed": 15.5, "tokens_processed": 20480}
+{"step": 30, "train_loss": 4.586, "val_loss": 5.0185, "val_ppl": 151.18, "lr": 0.00015, "elapsed": 22.9, "tokens_processed": 30720}
+{"step": 40, "train_loss": 4.2698, "val_loss": 4.8357, "val_ppl": 125.92, "lr": 0.0002, "elapsed": 30.1, "tokens_processed": 40960}
+{"step": 50, "train_loss": 3.8266, "val_loss": 4.7519, "val_ppl": 115.8, "lr": 0.00025, "elapsed": 37.3, "tokens_processed": 51200}
+{"step": 60, "train_loss": 4.0402, "val_loss": 4.7572, "val_ppl": 116.42, "lr": 0.0003, "elapsed": 44.3, "tokens_processed": 61440}
+{"step": 70, "train_loss": 3.1788, "val_loss": 4.8064, "val_ppl": 122.29, "lr": 0.0002934, "elapsed": 51.2, "tokens_processed": 71680}
+{"step": 80, "train_loss": 2.3166, "val_loss": 4.827, "val_ppl": 124.83, "lr": 0.0002714, "elapsed": 58.1, "tokens_processed": 81920}
+{"step": 90, "train_loss": 2.3288, "val_loss": 4.8832, "val_ppl": 132.05, "lr": 0.0002365, "elapsed": 65.2, "tokens_processed": 92160}
+{"step": 100, "train_loss": 2.4346, "val_loss": 4.8856, "val_ppl": 132.37, "lr": 0.0001931, "elapsed": 72.7, "tokens_processed": 102400}
+{"step": 110, "train_loss": 2.0169, "val_loss": 4.9291, "val_ppl": 138.26, "lr": 0.0001462, "elapsed": 79.5, "tokens_processed": 112640}
+{"step": 120, "train_loss": 1.6549, "val_loss": 4.9332, "val_ppl": 138.83, "lr": 0.0001016, "elapsed": 86.5, "tokens_processed": 122880}
+{"step": 130, "train_loss": 1.8267, "val_loss": 4.9907, "val_ppl": 147.04, "lr": 6.47e-05, "elapsed": 93.6, "tokens_processed": 133120}
+{"step": 140, "train_loss": 1.8406, "val_loss": 4.999, "val_ppl": 148.26, "lr": 3.98e-05, "elapsed": 100.8, "tokens_processed": 143360}
+{"step": 150, "train_loss": 1.259, "val_loss": 5.0037, "val_ppl": 148.97, "lr": 3.01e-05, "elapsed": 108.2, "tokens_processed": 153600}
