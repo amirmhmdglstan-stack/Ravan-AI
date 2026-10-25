@@ -280,6 +280,9 @@ def main():
     ap.add_argument("--train-sft", default=None, help="messages jsonl (sft train)")
     ap.add_argument("--valid-sft", default=None, help="messages jsonl (sft val)")
     ap.add_argument("--eval-every", type=int, default=250)
+    ap.add_argument("--snap-every", type=int, default=0,
+                    help="if >0, save a raw state_dict snapshot at each eval "
+                         "into out/snaps/stepN.pt (for offline candidate comparison)")
     ap.add_argument("--save-every", type=int, default=1000)
     ap.add_argument("--bf16", action="store_true", help="CPU bf16 autocast if faster/supported")
     ap.add_argument("--arch", default="small", choices=["small", "micro"])
@@ -402,6 +405,9 @@ def main():
                 best_val, best_step = val, step + 1
                 model.save_pretrained(out / "best", safe_serialization=True)
                 tok.save_pretrained(out / "best")
+            if args.snap_every:
+                (out / "snaps").mkdir(exist_ok=True)
+                torch.save(model.state_dict(), out / "snaps" / f"step{step + 1}.pt")
         if (step + 1) % args.save_every == 0 or step + 1 == args.steps:
             torch.save(dict(model=model.state_dict(), opt=opt.state_dict(),
                             step=step + 1, best_val=best_val, best_step=best_step),

@@ -155,8 +155,10 @@ def instr_nll_per_byte(model, tok):
     }
 
 
-def run_checkpoint(ckpt, tag, max_new_tokens, n_samples=0, style="v2"):
+def run_checkpoint(ckpt, tag, max_new_tokens, n_samples=0, style="v2",
+                sample=False, temperature=0.75, top_p=0.9, repetition_penalty=1.15):
     tok = PreTrainedTokenizerFast.from_pretrained(str(ckpt))
+    torch.manual_seed(1234)  # deterministic sampling per run
     model = GPT2LMHeadModel.from_pretrained(str(ckpt)).eval()
     rows = []
     for p in load_probes():
@@ -164,7 +166,9 @@ def run_checkpoint(ckpt, tag, max_new_tokens, n_samples=0, style="v2"):
             break
         prompt = format_prompt(p["messages"], style)
         t0 = time.time()
-        res = generate(model, tok, prompt, max_new_tokens=max_new_tokens, greedy=True)
+        res = generate(model, tok, prompt, max_new_tokens=max_new_tokens,
+                        greedy=not sample, temperature=temperature, top_p=top_p,
+                        repetition_penalty=repetition_penalty)
         lat = round(time.time() - t0, 2)
         rep = repetition_metrics(res["answer"])
         res.update(
@@ -192,7 +196,7 @@ def run_checkpoint(ckpt, tag, max_new_tokens, n_samples=0, style="v2"):
     result = {
         "tag": tag,
         "checkpoint": str(ckpt),
-        "decode": {"mode": "greedy", "max_new_tokens": max_new_tokens, "chat_format": style},
+        "decode": {"mode": "sample" if sample else "greedy", "max_new_tokens": max_new_tokens, "chat_format": style},
         "summary": {
             "probes": len(rows),
             "nonempty": len(rows) - n_empty,
@@ -247,6 +251,10 @@ def main():
                     help="chat prompt format of the checkpoint (v1 = original experiment)")
     ap.add_argument("--max-new-tokens", type=int, default=64)
     ap.add_argument("--limit", type=int, default=0, help="only first N probes")
+    ap.add_argument("--sample", action="store_true", help="sample (app-like) instead of greedy")
+    ap.add_argument("--temperature", type=float, default=0.75)
+    ap.add_argument("--top-p", type=float, default=0.9)
+    ap.add_argument("--repetition-penalty", type=float, default=1.15)
     ap.add_argument("--compare", nargs=2, metavar=("A", "B"))
     a = ap.parse_args()
     if a.compare:
@@ -256,7 +264,8 @@ def main():
         ap.error("--checkpoint required (or --compare)")
     torch.set_num_threads(max(1, torch.get_num_threads()))
     run_checkpoint(a.checkpoint, a.tag or Path(a.checkpoint).name, a.max_new_tokens, a.limit,
-                   a.style)
+                   a.style, sample=a.sample, temperature=a.temperature, top_p=a.top_p,
+                   repetition_penalty=a.repetition_penalty)
 
 
 if __name__ == "__main__":

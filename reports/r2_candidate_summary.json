@@ -1,0 +1,42 @@
+{
+  "70": {
+    "val": null,
+    "probes": 21,
+    "nonempty": 21,
+    "empty_or_whitespace": 0,
+    "repetitive": 7,
+    "looks_ok": 14,
+    "empty_rate": 0.0,
+    "nll_per_byte": 1.1331
+  },
+  "80": {
+    "val": null,
+    "probes": 21,
+    "nonempty": 21,
+    "empty_or_whitespace": 0,
+    "repetitive": 1,
+    "looks_ok": 20,
+    "empty_rate": 0.0,
+    "nll_per_byte": 1.148
+  },
+  "100": {
+    "val": null,
+    "probes": 21,
+    "nonempty": 21,
+    "empty_or_whitespace": 0,
+    "repetitive": 0,
+    "looks_ok": 21,
+    "empty_rate": 0.0,
+    "nll_per_byte": 1.1696
+  },
+  "120": {
+    "val": null,
+    "probes": 21,
+    "nonempty": 21,
+    "empty_or_whitespace": 0,
+    "repetitive": 1,
+    "looks_ok": 20,
+    "empty_rate": 0.0,
+    "nll_per_byte": 1.1807
+  }
+}
