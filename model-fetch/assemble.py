@@ -53,7 +53,7 @@ def main():
             sha_file = OUT / f'{eid}.sha256'
             if not sha_file.exists():
                 # fetch sha from repo (may not be local after no-pull workflow)
-                expected = gh_raw(f'model-fetch/out/{eid}.sha256').decode().split()[0]
+                expected = gh_raw(f'model-fetch/out/{eid}.sha256?ref={BRANCH}').decode().split()[0]
             else:
                 expected = sha_file.read_text().split()[0]
         except Exception as ex:

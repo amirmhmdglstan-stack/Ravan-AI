@@ -6,7 +6,33 @@
       "filename": "qwen3-1.7b-q4_k_m.gguf",
       "source": "hf",
       "repo": "Qwen/Qwen3-1.7B-GGUF",
-      "fallback_repos": ["bartowski/Qwen3-1.7B-GGUF", "unsloth/Qwen3-1.7B-GGUF"],
+      "fallback_repos": [
+        "bartowski/Qwen3-1.7B-GGUF",
+        "unsloth/Qwen3-1.7B-GGUF"
+      ],
+      "filename_regex": "q4_k_m\\.gguf$"
+    },
+    {
+      "id": "qwen25-1.5b-inst-q4km",
+      "filename": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+      "source": "hf",
+      "repo": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+      "fallback_repos": [
+        "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+        "unsloth/Qwen2.5-1.5B-Instruct-GGUF"
+      ],
+      "filename_regex": "q4_k_m\\.gguf$"
+    },
+    {
+      "id": "gemma3-1b-it-q4km",
+      "filename": "gemma-3-1b-it-q4_k_m.gguf",
+      "source": "hf",
+      "repo": "bartowski/google_gemma-3-1b-it-GGUF",
+      "fallback_repos": [
+        "bartowski/gemma-3-1b-it-GGUF",
+        "unsloth/gemma-3-1b-it-GGUF",
+        "ggml-org/gemma-3-1b-it-GGUF"
+      ],
       "filename_regex": "q4_k_m\\.gguf$"
     },
     {
@@ -14,7 +40,10 @@
       "filename": "qwen3-0.6b-q4_k_m.gguf",
       "source": "hf",
       "repo": "Qwen/Qwen3-0.6B-GGUF",
-      "fallback_repos": ["bartowski/Qwen3-0.6B-GGUF", "unsloth/Qwen3-0.6B-GGUF"],
+      "fallback_repos": [
+        "bartowski/Qwen3-0.6B-GGUF",
+        "unsloth/Qwen3-0.6B-GGUF"
+      ],
       "filename_regex": "q4_k_m\\.gguf$"
     },
     {

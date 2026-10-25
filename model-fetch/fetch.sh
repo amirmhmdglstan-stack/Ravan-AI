@@ -22,7 +22,18 @@ jq -c '.entries[]' model-fetch/manifest.json | while IFS= read -r e; do
   if [ -f "$OUT/$id.sha256" ] && ls "$OUT/$id".part-* >/dev/null 2>&1; then
     expected=$(cut -d' ' -f1 "$OUT/$id.sha256")
     if [ "$(sha_of_parts "$id")" = "$expected" ]; then
-      echo "skip $id (chunks already present)"
+      echo "skip $id (chunks already present); ensuring release asset exists"
+      tag=$(jq -r .release_tag model-fetch/manifest.json)
+      if ! gh release view "$tag" --json assets 2>/dev/null | jq -e --arg n "$fname" '.assets[]|select(.name==$n)' >/dev/null 2>&1; then
+        cat "$OUT/$id".part-* > "$OUT/$fname"
+        if gh release view "$tag" >/dev/null 2>&1; then
+          gh release upload "$tag" "$OUT/$fname" --clobber || echo "RELEASE_UPLOAD_FAILED $id" | tee -a "$OUT/_failures.txt"
+        else
+          gh release create "$tag" "$OUT/$fname" --title "Ravan-AI v3 model assets" \
+            --notes "Pretrained open-source assets for Ravan-AI v3." || echo "RELEASE_CREATE_FAILED $id" | tee -a "$OUT/_failures.txt"
+        fi
+        rm -f "$OUT/$fname"
+      fi
       continue
     fi
   fi
