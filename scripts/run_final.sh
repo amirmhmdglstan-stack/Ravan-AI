@@ -26,7 +26,7 @@ echo "== 7. Native smoke =="
 PROMPT='<|user|>\nسلام! حالت چطوره؟\n<|end|>\n<|assistant|>\n'
 printf "$PROMPT" > /tmp/ravan_prompt.txt
 "$LLAMA/build/bin/llama-cli" -m model/ravan-v2-Q4_0.gguf -f /tmp/ravan_prompt.txt \
-  -n 64 --temp 0.75 --top-p 0.9 --repeat-penalty 1.15 \
-  --reverse-prompt '<|user|>' -r '<|end|>' --seed 7 -no-cnv 2>&1 | tail -30
+  -n 64 --temp 0.75 --top-p 0.9 --repeat-penalty 1.15 -st \
+  -r '<|end|>' --seed 7 2>&1 | tail -30
 
 echo "== done: model/ravan-v2-f16.gguf model/ravan-v2-Q4_0.gguf =="
