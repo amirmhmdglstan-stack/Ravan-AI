@@ -28,6 +28,22 @@ corpus files and, as good practice, of derived model weights.
 - Status: public-domain literary works; only verse text was used. AI-generated
   summaries and biographies on the site were deliberately excluded.
 
+## v3 pretrained base models (weights shipped as chunks + release assets)
+
+- **Qwen3-1.7B / Qwen3-0.6B** (selected quant: unsloth/Qwen3-1.7B-GGUF Q4_K_M,
+  unsloth/Qwen3-0.6B-GGUF Q4_K_M): Apache License 2.0,
+  https://github.com/QwenLM/Qwen3 — © Alibaba Group / Qwen team.
+- **Qwen2.5-1.5B-Instruct** (bartowski/unsloth GGUF quant): Apache License 2.0,
+  https://github.com/QwenLM/Qwen2.5 — © Alibaba Group / Qwen team.
+- **Gemma-3-1B-it** (bartowski GGUF quant): Google Gemma Terms of Use,
+  https://ai.google.dev/gemma/terms — © Google.
+- **llama.cpp** Windows runtime (official CPU build zip): MIT License,
+  https://github.com/ggml-org/llama.cpp — © ggml-org contributors.
+
+These are redistributed as unmodified quantized files (Q4_K_M) of the
+official releases; quantization performed upstream as noted. Retain this file
+with any redistribution of the repository, its release assets, or chunks.
+
 ## Project-authored material
 
 - `data/raw/pretrain.txt`, `data/raw/instructions*.jsonl`,

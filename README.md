@@ -1,36 +1,32 @@
-# Ravan-AI — a Persian-first language model trained from scratch, end to end
+# Ravan-AI — a Persian-first local assistant (v3)
 
-**v2 (2026-10-25):** a 13.99 M-parameter GPT-2-style decoder, a fresh 8k
-byte-level BPE tokenizer, pretraining on a 535-million-character lawful corpus,
-leak-controlled SFT, and CPU-native GGUF deployment — all trained here from
-random initialization. Not a fine-tune of any existing model.
+**Current model: Qwen3-1.7B-Instruct (Q4_K_M, ~1.1 GB) running fully offline
+via llama.cpp on your own PC.** Real instruction understanding, multi-turn
+memory, and correct step-by-step reasoning — verified on recorded test
+batteries (`reports/PRODUCTION_REPORT_v3.md`). The earlier scratch-trained
+v1/v2 models remain in this repo as documented history; read
+`reports/WHY_V2_CANT_TALK.md` for why they could not understand language.
 
-## Honest quality statement (read this first)
+## Quick start (Windows, 4 GB, no GPU)
 
-Measured against the fixed 21-probe suite (`reports/eval_sft_v2.json`):
+1. Download from the **`assets-v3` release** (Releases page):
+   `qwen3-1.7b-q4_k_m.gguf` → put in `model\`, and
+   `llama-b-win-cpu-x64.zip` → put in `windows\`.
+2. Double-click `windows\run-chat-v3.bat` (auto-extracts the runtime if
+   needed; serves on 127.0.0.1:8080 and opens the UI).
+3. Everything runs offline afterwards. Expect ≈3–5 tokens/s on the G3250
+   (≈10–14 on a modern 2-core); the smaller `qwen3-0.6b-q4_k_m.gguf` in the
+   same release is the speed option. Details: `docs/INSTALL_FA.md`.
 
-| run | decode | empty answers | repetitive | looks ok | NLL/byte |
-|---|---|---|---|---|---|
-| original v1 (2026-10-24) | greedy | 95.2% | 21/21 | — | 1.9178 |
-| fixed-pipeline experiment | greedy | 4.8% | 0 | 20/21 | 1.5977 |
-| **v2 final** | greedy | **0%** | **0** | **21/21** | **1.4286** |
-| **v2 final** | sampled | **0%** | **0** | **21/21** | 1.4286 |
-
-What this means: v2 always answers, stops correctly at the end-of-turn token,
-emits well-formed Persian with no degenerate loops, and assigns far better
-likelihood to held-out instructions than either earlier run. **What it does
-not mean:** with 14 M parameters and 25 M training tokens the answers are only
-partially on topic. This is a research artifact that demonstrates a complete
-pipeline, not a production assistant. Outputs are statistical patterns, not
-verifiable facts — never rely on it for education, health, law, or safety.
-Attribution for the training data is mandatory: see `NOTICE`.
+Key numbers: **1.7 B params, 2048-token context** (v2: 14 M params / 512 ctx).
+Licenses: Apache-2.0 (Qwen), Gemma Terms, MIT (llama.cpp) — see `NOTICE`.
 
 ## What's in the box
 
 | path | what it is |
 |---|---|
-| `model/ravan-v2-Q4_0.gguf` (10.6 MB) | the deployable model (Q4_0, llama.cpp) |
-| `model/ravan-v2-f16.gguf` (28.8 MB) | unquantized twin |
+| `model-fetch/out/` + release `assets-v3` | **v3 weights**: Qwen3/Qwen2.5/Gemma GGUFs as ≤95 MB chunks + full files in Releases |
+| `windows/run-chat-v3.bat` | one-click Windows launcher (runtime zip + any released model) |
 | `model/sft_v2/best/` | selected HF checkpoint (SFT step 300, weights-only, gitignored) |
 | `model/pretrain_v2/` | pretraining output incl. `best/` (gitignored) |
 | `model/tok_v2_8k/`, `model/tok_v2_16k/` | the two tokenizer candidates (8k selected) |
