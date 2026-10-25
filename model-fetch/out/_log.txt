@@ -19,3 +19,26 @@ chunks ok: 5 parts
 === [llama-server-win-cpu] ===
 skip llama-server-win-cpu (chunks already present)
 === done; failures: ===
+=== [qwen3-1.7b-q4km] ===
+skip qwen3-1.7b-q4km (chunks already present); ensuring release asset exists
+=== [qwen25-1.5b-inst-q4km] ===
+resolved HF Qwen/Qwen2.5-1.5B-Instruct-GGUF/qwen2.5-1.5b-instruct-q4_k_m.gguf
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1116  100  1116    0     0  28166      0 --:--:-- --:--:-- --:--:-- 28615
+  4 1065M    4 46.6M    0     0   143M      0  0:00:07 --:--:--  0:00:07  143M 40 1065M   40  426M    0     0   321M      0  0:00:03  0:00:01  0:00:02  379M 81 1065M   81  873M    0     0   375M      0  0:00:02  0:00:02 --:--:--  413M100 1065M  100 1065M    0     0   387M      0  0:00:02  0:00:02 --:--:--  420M
+downloaded qwen25-1.5b-inst-q4km: 1117320736 bytes sha=6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e
+chunks ok: 12 parts
+=== [gemma3-1b-it-q4km] ===
+resolved HF bartowski/google_gemma-3-1b-it-GGUF/google_gemma-3-1b-it-Q4_K_M.gguf
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1110  100  1110    0     0  29269      0 --:--:-- --:--:-- --:--:-- 30000
+ 28  768M   28  219M    0     0   219M      0  0:00:03 --:--:--  0:00:03  219M 56  768M   56  437M    0     0   219M      0  0:00:03  0:00:01  0:00:02  219M 82  768M   82  634M    0     0   211M      0  0:00:03  0:00:02  0:00:01  207M100  768M  100  768M    0     0   229M      0  0:00:03  0:00:03 --:--:--  233M
+downloaded gemma3-1b-it-q4km: 806058496 bytes sha=12bf0fff8815d5f73a3c9b586bd8fee8e7b248c935de70dec367679873d0f29d
+chunks ok: 9 parts
+=== [qwen3-0.6b-q4km] ===
+skip qwen3-0.6b-q4km (chunks already present); ensuring release asset exists
+=== [llama-server-win-cpu] ===
+skip llama-server-win-cpu (chunks already present); ensuring release asset exists
+=== done; failures: ===
