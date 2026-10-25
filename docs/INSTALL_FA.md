@@ -7,7 +7,7 @@
 ## چیزهایی که لازم است
 
 - Windows 11 نسخه‌ی ۶۴بیتی.
-- فایل‌های مخزن، شامل `model\ravan-sft-Q4_0.gguf` و پوشه‌ی `app`.
+- فایل‌های مخزن، شامل `model\ravan-v2-Q4_0.gguf` و پوشه‌ی `app`.
 - یک‌بار دریافت runtime رسمی `llama.cpp` برای Windows x64 CPU از [صفحه‌ی release رسمی](https://github.com/ggml-org/llama.cpp/releases/tag/b11768): فایل `llama-b11768-bin-win-cpu-x64.zip` (حدود ۲۴ مگابایت در release بررسی‌شده). اتصال اینترنت فقط برای این بار لازم است.
 - Python، PyTorch، Node.js، API key یا حساب پولی روی رایانه لازم نیست.
 
@@ -16,8 +16,8 @@
 ## نصب
 
 1. پوشه‌ی پروژه را در محلی مثل `C:\Ravan-AI` قرار دهید.
-2. فایل ZIP رسمی CPU را با File Explorer باز کنید و `llama-server.exe` به‌علاوه‌ی همه‌ی DLLهای کنار آن را در پوشه‌ی `windows` کپی کنید؛ در کنار `run-chat.bat` قرار بگیرند.
-3. در File Explorer روی `windows\run-chat.bat` دوبار کلیک کنید.
+2. فایل ZIP رسمی CPU را با File Explorer باز کنید و `llama-server.exe` به‌علاوه‌ی همه‌ی DLLهای کنار آن را در پوشه‌ی `windows` کپی کنید؛ در کنار `run-chat-v2.bat` قرار بگیرند.
+3. در File Explorer روی `windows\run-chat-v2.bat` دوبار کلیک کنید.
 4. مرورگر باید صفحه‌ی محلی را باز کند. اگر نشد، پس از آماده‌شدن سرور به `http://127.0.0.1:8080` بروید.
 5. پنجره‌ی سیاه را تا پایان گفت‌وگو نبندید. برای خاموش‌کردن موتور همان پنجره را ببندید.
 
@@ -30,9 +30,9 @@
 ## اگر موتور شروع نشد
 
 - اگر `llama-server.exe was not found` دیدی، فایل اجرایی و DLLهای release را در `windows` قرار بده.
-- اگر مدل پیدا نشد، ساختار پوشه را تغییر نده: فایل باید در `model\ravan-sft-Q4_0.gguf` باشد.
+- اگر مدل پیدا نشد، ساختار پوشه را تغییر نده: فایل باید در `model\ravan-v2-Q4_0.gguf` باشد.
 - اگر `Illegal instruction` آمد، پردازنده یا فایل runtime با هم سازگار نیستند. بسته‌ی AVX2 را پاک کن و یک نسخه‌ی llama.cpp با SSE4.2 و بدون AVX/AVX2/FMA/F16C/BMI2 بساز یا نسخه‌ی CPU پایه‌ی تأییدشده پیدا کن. چنین باینری ویندوزی در این مخزن ارائه نشده است.
-- برای آزمایش صرفِ بارگذاری، از پوشه‌ی ریشه اجرا کن: `llama-server.exe -m model\ravan-sft-Q4_0.gguf --host 127.0.0.1 --port 8080 --ctx-size 128 --threads 2 --parallel 1 --path app`.
+- برای آزمایش صرفِ بارگذاری، از پوشه‌ی ریشه اجرا کن: `llama-server.exe -m model\ravan-v2-Q4_0.gguf --host 127.0.0.1 --port 8080 --ctx-size 512 --threads 2 --parallel 1 --path app`.
 
 ## پاک‌کردن اطلاعات
 
