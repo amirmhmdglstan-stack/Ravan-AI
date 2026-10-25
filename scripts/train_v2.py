@@ -277,6 +277,8 @@ def main():
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--train-tok", default=None, help="uint32 .tok stream (pretrain)")
     ap.add_argument("--valid-tok", default=None, help="uint32 .tok stream (pretrain val)")
+    ap.add_argument("--train-sft", default=None, help="messages jsonl (sft train)")
+    ap.add_argument("--valid-sft", default=None, help="messages jsonl (sft val)")
     ap.add_argument("--eval-every", type=int, default=250)
     ap.add_argument("--save-every", type=int, default=1000)
     ap.add_argument("--bf16", action="store_true", help="CPU bf16 autocast if faster/supported")
@@ -313,8 +315,10 @@ def main():
     else:
         init = Path(args.init_from) if args.init_from else MODEL_DIR / "pretrain_v2"
         model = GPT2LMHeadModel.from_pretrained(str(init))
-        train_ids, train_mask = load_sft(DATA / "instructions_train.jsonl", tok)
-        valid_ids, valid_mask = load_sft(DATA / "instructions_valid.jsonl", tok)
+        tr_sft = Path(args.train_sft) if args.train_sft else DATA / "instructions_train.jsonl"
+        va_sft = Path(args.valid_sft) if args.valid_sft else DATA / "instructions_valid.jsonl"
+        train_ids, train_mask = load_sft(tr_sft, tok)
+        valid_ids, valid_mask = load_sft(va_sft, tok)
 
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.1, betas=(0.9, 0.95))
     out.mkdir(parents=True, exist_ok=True)

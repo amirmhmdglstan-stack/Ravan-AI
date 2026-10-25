@@ -27,6 +27,59 @@ def check(name, cond, extra=""):
         FAILS.append(name)
 
 
+def test_tokenizer_v2():
+    from transformers import PreTrainedTokenizerFast
+    tok = PreTrainedTokenizerFast.from_pretrained("model/tok_v2_8k")
+    check("v2 vocab size is 8192", len(tok) == 8192, f"({len(tok)})")
+    ids_spec = (tok.convert_tokens_to_ids("[UNK]"), tok.bos_token_id,
+                tok.convert_tokens_to_ids("<|user|>"), tok.convert_tokens_to_ids("<|assistant|>"),
+                tok.convert_tokens_to_ids("<|end|>"))
+    check("v2 special ids [unk,bos,user,assistant,end]", ids_spec == (0, 1, 2, 3, 4), str(ids_spec))
+    for s in ["سلام! حالت چطوره؟", "The quick brown fox jumps.", "نیم‌فاصله‌ها و اعداد ۱۲۳"]:
+        rt = tok.decode(tok.encode(s, add_special_tokens=False)) == s
+        check(f"roundtrip {s[:16]!r}", rt)
+
+
+def test_sft_leak_control():
+    probes = json.loads(Path("data/eval/probes.jsonl").read_text(encoding="utf-8"))["probes"]
+    pn = {" ".join(p["messages"][-1]["content"].split()) for p in probes}
+    train = [json.loads(l) for l in Path("data/processed/instructions_train_v2.jsonl")
+             .read_text(encoding="utf-8").splitlines() if l.strip()]
+    valid = [json.loads(l) for l in Path("data/processed/instructions_valid_v2.jsonl")
+             .read_text(encoding="utf-8").splitlines() if l.strip()]
+    leaks = [m["content"][:40] for d in train for m in d["messages"]
+             if m["role"] == "user" and " ".join(m["content"].split()) in pn]
+    check("no probe text in SFT train", not leaks, str(leaks[:3]))
+    check("SFT train size >= 80", len(train) >= 80, f"({len(train)})")
+    check("SFT valid size >= 15", len(valid) >= 15, f"({len(valid)})")
+    check("every dialog starts user / ends assistant",
+          all(d["messages"][0]["role"] == "user" and d["messages"][-1]["role"] == "assistant"
+              for d in train + valid))
+
+
+def _flatten_ints(o):
+    if isinstance(o, int) and not isinstance(o, bool):
+        yield o
+    elif isinstance(o, dict):
+        for v in o.values():
+            yield from _flatten_ints(v)
+    elif isinstance(o, list):
+        for v in o:
+            yield from _flatten_ints(v)
+
+
+def test_corpus_and_token_stream():
+    import numpy as np
+    stats = json.loads(Path("data/processed/corpus_stats.json").read_text(encoding="utf-8"))
+    check("corpus stats record > 100M chars", any(
+        v > 100_000_000 for v in _flatten_ints(stats)))
+    for f, minimum in [("data/processed/train.tok", 30_000_000),
+                       ("data/processed/valid.tok", 200_000)]:
+        arr = np.fromfile(f, dtype=np.uint32)
+        check(f"{f} tokens >= {minimum}", arr.size >= minimum, f"({arr.size})")
+        check(f"{f} ids < vocab", int(arr.max()) < 8192, f"(max={int(arr.max())})")
+
+
 def test_loss_alignment():
     """logits[t] must be trained against token t+1 (no double shift)."""
     torch.manual_seed(0)
@@ -137,6 +190,9 @@ if __name__ == "__main__":
     test_sft_masking()
     test_eval_probe_format()
     test_format_dialog_matches_inference()
+    test_tokenizer_v2()
+    test_sft_leak_control()
+    test_corpus_and_token_stream()
     if FAILS:
         print(f"\n{len(FAILS)} test(s) FAILED: {FAILS}")
         sys.exit(1)
