@@ -5,7 +5,7 @@
 | Dataset/material | Source and licence | Use / processing | Split and size |
 |---|---|---|---|
 | `data_raw/fawiki/*.jsonl` | Persian Wikipedia 2018 dump, packaged by GitHub `Text-Mining/Persian-Wikipedia-Corpus`; Wikipedia text is **CC BY-SA 4.0** (attribution + ShareAlike). Raw dump files are not committed (re-download ~2 min; see `docs/REPRODUCE_v2.md`). | Namespace-0 articles ≥400 chars; NFC + Arabic Yeh/Kaf→Persian; control chars stripped (ZWNJ kept); sha256 exact-dedup; 1% hash holdout. | 166,965 docs, 401,868,353 chars (train+holdout combined). |
-| `data_raw/mizan.zip` | **Mizan** fa↔en parallel corpus, licensed **CC BY 4.0** (the zip layout `mizan/mizan_fa.txt`, `mizan/mizan_en.txt` comes from the MaziyarPub/Mizan release). Not committed; re-download per `docs/REPRODUCE_v2.md`. | Parallel sides ingested separately as `mizan-fa` / `mizan-en`; min-length filter (fa 24 / en 40 chars); same normalization + dedup. | fa: 865,836 lines / 57,867,626 chars; en: 654,742 / 53,872,547. |
+| `data_raw/mizan.zip` | **MIZAN** fa↔en parallel corpus by Omid Kashefi (2018, arXiv:1801.02107), github.com/omidkashefi/Mizan, licensed **CC BY 4.0** (zip layout `mizan/mizan_fa.txt`, `mizan/mizan_en.txt`). Not committed; re-download per `docs/REPRODUCE_v2.md`. | Parallel sides ingested separately as `mizan-fa` / `mizan-en`; min-length filter (fa 24 / en 40 chars); same normalization + dedup. | fa: 865,836 lines / 57,867,626 chars; en: 654,742 / 53,872,547. |
 | `data_raw/ganjoor/` | Ganjoor.net public-domain classical poetry (ghazal/hexameter verse of classical poets: ferdousi, saadi, hafez, khayyam, attar, jami, saeb, khajoo, bahar, asadi, anvari). Only `Verses[].Text` by `VOrder` is used; AI summaries and biographies deliberately excluded. | Verse text joined per poem; same normalization + dedup. | 24,150 poems, 21,852,596 chars. |
 | `data/raw/pretrain.txt` | Original short Persian/English text written for this repository. | Starter source in the same pipeline. | 39 docs, 9,031 chars. |
 | **Total** | | | **535,470,153 chars / 1,711,732 docs** (`data/processed/corpus_stats.json`). `corpus_train.jsonl` 1,691,514 docs; hash holdout `corpus_valid.jsonl` 20,218 docs. |
@@ -19,7 +19,7 @@ Tokenized stream (`scripts/tokenize_corpus.py`, tokenizer `model/tok_v2_8k`, see
 When distributing this repository, the trained weights, GGUF files, or derivatives, include:
 
 - **Persian Wikipedia contributors** — content under CC BY-SA 4.0; source: https://fa.wikipedia.org (2018 dump via Text-Mining/Persian-Wikipedia-Corpus). ShareAlike and attribution apply to the corpus text; retain this notice with any redistributed corpus files.
-- **Mizan corpus** — CC BY 4.0 (https://github.com/MaziyarPub/Mizan).
+- **Mizan corpus** — MIZAN, Omid Kashefi (2018), CC BY 4.0, https://github.com/omidkashefi/Mizan (cite: arXiv:1801.02107).
 - **Ganjoor classical verse** — public-domain poems as digitized by Ganjoor (https://ganjoor.net); AI-generated summaries were not used.
 - Model outputs are **statistical patterns, not verifiable facts**; the model has weights-only knowledge (no retrieval), no live data, and can be confidently wrong. Do not use it for medical, legal, or safety-critical decisions.
 
