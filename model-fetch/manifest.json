@@ -6,16 +6,16 @@
       "filename": "qwen3-1.7b-q4_k_m.gguf",
       "source": "hf",
       "repo": "Qwen/Qwen3-1.7B-GGUF",
-      "fallback_repos": ["bartowski/Qwen3-1.7B-GGUF", "Qwen/Qwen3-1.7B"],
-      "filename_regex": "(?i)1\\.7b.*q4_k_m\\.gguf$|(?i)q4_k_m\\.gguf$"
+      "fallback_repos": ["bartowski/Qwen3-1.7B-GGUF", "unsloth/Qwen3-1.7B-GGUF"],
+      "filename_regex": "q4_k_m\\.gguf$"
     },
     {
       "id": "qwen3-0.6b-q4km",
       "filename": "qwen3-0.6b-q4_k_m.gguf",
       "source": "hf",
       "repo": "Qwen/Qwen3-0.6B-GGUF",
-      "fallback_repos": ["bartowski/Qwen3-0.6B-GGUF", "Qwen/Qwen3-0.6B"],
-      "filename_regex": "(?i)0\\.6b.*q4_k_m\\.gguf$|(?i)q4_k_m\\.gguf$"
+      "fallback_repos": ["bartowski/Qwen3-0.6B-GGUF", "unsloth/Qwen3-0.6B-GGUF"],
+      "filename_regex": "q4_k_m\\.gguf$"
     },
     {
       "id": "llama-server-win-cpu",

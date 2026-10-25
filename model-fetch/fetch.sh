@@ -8,6 +8,7 @@ set -uo pipefail
 cd "$(dirname "$0")/.."
 OUT=model-fetch/out
 mkdir -p "$OUT"
+exec > >(tee -a "$OUT/_log.txt") 2>&1
 : > "$OUT/_failures.txt"
 
 sha_of_parts() { cat "$OUT/$1".part-* 2>/dev/null | sha256sum | cut -d' ' -f1; }
@@ -37,7 +38,7 @@ jq -c '.entries[]' model-fetch/manifest.json | while IFS= read -r e; do
       [ -n "$repo" ] || continue
       meta=$(curl -fsSL --retry 4 --retry-delay 4 "https://huggingface.co/api/models/$repo" || true)
       [ -n "$meta" ] || continue
-      f=$(jq -r '.siblings[]?.rfilename' <<<"$meta" | grep -E "$pat" | head -1 || true)
+      f=$(jq -r '.siblings[]?.rfilename' <<<"$meta" | grep -Ei "$pat" | head -1 || true)
       if [ -n "$f" ]; then
         url="https://huggingface.co/$repo/resolve/main/$f"
         echo "resolved HF $repo/$f"
@@ -71,15 +72,17 @@ jq -c '.entries[]' model-fetch/manifest.json | while IFS= read -r e; do
 
   # --- upload full file to the shared release (user-facing single-file download) ---
   tag=$(jq -r .release_tag model-fetch/manifest.json)
+  cp "$OUT/$id.full" "$OUT/$fname"
   if gh release view "$tag" >/dev/null 2>&1; then
-    gh release upload "$tag" "$OUT/$id.full#$(basename "$fname")" --clobber || \
+    gh release upload "$tag" "$OUT/$fname" --clobber || \
       echo "RELEASE_UPLOAD_FAILED $id" | tee -a "$OUT/_failures.txt"
   else
-    gh release create "$tag" "$OUT/$id.full#$(basename "$fname")" \
+    gh release create "$tag" "$OUT/$fname" \
       --title "Ravan-AI v3 model assets" \
       --notes "Pretrained open-source assets fetched for Ravan-AI v3 (Qwen3 GGUF quantizations, llama.cpp Windows runtime). Chunks also committed under model-fetch/out/ for in-repo retrieval." || \
       echo "RELEASE_CREATE_FAILED $id" | tee -a "$OUT/_failures.txt"
   fi
+  rm -f "$OUT/$fname"
 
   # --- split into <=95MB chunks (GitHub hard limit is 100MB/file) ---
   split -b 95000000 -d -a 2 "$OUT/$id.full" "$OUT/$id.part-"
