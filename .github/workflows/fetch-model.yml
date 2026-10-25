@@ -1,0 +1,49 @@
+name: fetch-model-assets
+
+on:
+  push:
+    branches: [arena/3d3c3d6b-ravan-ai]
+    paths:
+      - 'model-fetch/manifest.json'
+      - '.github/workflows/fetch-model.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-model-assets
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download, verify, split, release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash model-fetch/fetch.sh
+
+      - name: Commit chunks
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A model-fetch/out
+          if git diff --cached --quiet; then
+            echo "no new chunks"
+          else
+            git commit -m "assets: fetch model chunks (workflow)"
+            git pull --rebase origin "${{ github.ref_name }}"
+            git push origin "HEAD:${{ github.ref_name }}"
+          fi
+
+      - name: Fail if any entry failed
+        if: always()
+        run: |
+          if [ -s model-fetch/out/_failures.txt ]; then
+            echo "Some entries failed:"; cat model-fetch/out/_failures.txt; exit 1
+          fi

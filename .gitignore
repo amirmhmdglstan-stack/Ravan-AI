@@ -14,3 +14,7 @@ data/processed/corpus_train.jsonl
 data/processed/corpus_valid.jsonl
 data/processed/corpus_toksample.txt
 data/processed/*.tok
+
+# model fetch: transient full downloads + locally assembled artifacts
+model-fetch/out/*.full
+model-fetch/assembled/
