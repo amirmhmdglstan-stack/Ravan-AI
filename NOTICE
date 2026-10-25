@@ -1,0 +1,42 @@
+# Third-party notices and attribution
+
+Ravan-AI trains small language models from random initialization on the
+following third-party material. This file must accompany distributions of the
+corpus files and, as good practice, of derived model weights.
+
+## Persian Wikipedia (2018 dump)
+
+- Content: articles from the Persian edition of Wikipedia.
+- Licence: **CC BY-SA 4.0** (https://creativecommons.org/licenses/by-sa/4.0/)
+- Attribution: © Persian Wikipedia contributors, https://fa.wikipedia.org
+- Packaging used for acquisition: github.com/Text-Mining/Persian-Wikipedia-Corpus
+- ShareAlike notice: modified redistributions of the corpus text must remain
+  under CC BY-SA 4.0 with attribution.
+
+## MIZAN parallel corpus
+
+- Content: Persian–English sentence-aligned literary translations.
+- Licence: **CC BY 4.0** (https://creativecommons.org/licenses/by/4.0/)
+- Attribution: Omid Kashefi, "MIZAN: a large persian-english parallel corpus"
+  (2018), https://github.com/omidkashefi/Mizan, arXiv:1801.02107
+
+## Ganjoor classical poetry
+
+- Content: verses of classical Persian poets (Ferdowsi, Saadi, Hafez,
+  Khayyam, Attar, Jami, Saeb, Khajoo, Bahar, Asadi, Anvari) as digitized by
+  Ganjoor (https://ganjoor.net).
+- Status: public-domain literary works; only verse text was used. AI-generated
+  summaries and biographies on the site were deliberately excluded.
+
+## Project-authored material
+
+- `data/raw/pretrain.txt`, `data/raw/instructions*.jsonl`,
+  `data/raw/instructions_v2_part*.jsonl` and all repository code/docs are
+  original to this repository (currently published without an OSI licence —
+  see the repository landing page).
+
+## Disclaimer
+
+Model outputs are statistical patterns learned from the material above; they
+are **not verifiable facts** and may be confidently wrong. The model has no
+internet access and no retrieval system.
