@@ -1,0 +1,2 @@
+RESOLVE_FAILED qwen3-1.7b-q4km
+RESOLVE_FAILED qwen3-0.6b-q4km
