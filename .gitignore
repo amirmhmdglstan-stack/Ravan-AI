@@ -13,3 +13,4 @@ data_raw/
 data/processed/corpus_train.jsonl
 data/processed/corpus_valid.jsonl
 data/processed/corpus_toksample.txt
+data/processed/*.tok

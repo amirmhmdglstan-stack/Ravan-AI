@@ -16,6 +16,7 @@ import random
 import time
 from pathlib import Path
 
+import numpy as np
 import torch
 import torch.nn.functional as F
 from transformers import GPT2Config, GPT2LMHeadModel, PreTrainedTokenizerFast
@@ -115,23 +116,37 @@ def load_sft(path, tok):
 
 @torch.no_grad()
 def deterministic_val_loss(model, ids, seq, masked=False, batch=4, device="cpu"):
-    """Full sequential sweep over the validation stream; returns mean token NLL."""
+    """Full sequential sweep over the validation stream; returns mean token NLL.
+
+    Windows are non-overlapping and cover every position once; windows are
+    batched (batch x seq) for speed.
+    """
     was_training = model.training
     model.eval()
     total, count = 0.0, 0
-    # Non-overlapping chunks; cover every position exactly once.
-    for start in range(0, len(ids) - 1, seq):
-        chunk = ids[start:start + seq + 1]
-        if chunk.numel() < 2:
+    starts = list(range(0, len(ids) - 1, seq))
+    for bi in range(0, len(starts), batch):
+        xs, ys = [], []
+        for start in starts[bi:bi + batch]:
+            chunk = ids[start:start + seq + 1]
+            if chunk.numel() < 2:
+                continue
+            xs.append(chunk[:-1])
+            ys.append(chunk[1:])
+        if not xs:
             continue
-        x = chunk[:-1].unsqueeze(0).to(device)
-        y = chunk[1:].unsqueeze(0).to(device)
-        logits = model(input_ids=x).logits
-        nll = F.cross_entropy(
-            logits.reshape(-1, logits.size(-1)).float(), y.reshape(-1), reduction="sum"
-        )
+        # pad batch rows to equal length (last window may be short)
+        maxlen = max(x.numel() for x in xs)
+        xp = torch.zeros(len(xs), maxlen, dtype=torch.long)
+        yp = torch.full((len(xs), maxlen), -100, dtype=torch.long)
+        for i, (x, y) in enumerate(zip(xs, ys)):
+            xp[i, :x.numel()] = x
+            yp[i, :y.numel()] = y
+        logits = model(input_ids=xp.to(device)).logits
+        nll = F.cross_entropy(logits.reshape(-1, logits.size(-1)).float(),
+                              yp.to(device).reshape(-1), reduction="sum", ignore_index=-100)
         total += float(nll)
-        count += y.numel()
+        count += int((yp != -100).sum())
     if was_training:
         model.train()
     return total / max(1, count)
@@ -171,15 +186,23 @@ def sft_val_loss(model, ids, mask, seq, device="cpu"):
 def sample_windows(ids, mask, batch, seq, tries_per_slot=30):
     """Sample `batch` random windows of seq+1 tokens, aligned masks.
 
+    `ids` may be a torch tensor or a numpy uint32 stream.
     For SFT, resample a slot a few times if the window holds no supervised
     token so the gradient batch stays effective.
     """
     n = len(ids)
     xs, fulls, masks = [], [], []
+
+    def win(start):
+        sl = ids[start:start + seq + 1]
+        if torch.is_tensor(sl):
+            return sl
+        return torch.from_numpy(np.ascontiguousarray(sl).astype(np.int64))
+
     for _ in range(batch):
         for _attempt in range(tries_per_slot):
             start = random.randint(0, max(0, n - seq - 1))
-            chunk = ids[start:start + seq + 1]
+            chunk = win(start)
             if chunk.numel() == seq + 1:
                 break
         if chunk.numel() < seq + 1:  # stream shorter than window: pad-wrap
@@ -252,6 +275,8 @@ def main():
     ap.add_argument("--init-from", default=None, help="checkpoint to init from (sft); default model/pretrain_v2")
     ap.add_argument("--out", default=None, help="output dir (default model/pretrain_v2 or model/sft_v2)")
     ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--train-tok", default=None, help="uint32 .tok stream (pretrain)")
+    ap.add_argument("--valid-tok", default=None, help="uint32 .tok stream (pretrain val)")
     ap.add_argument("--eval-every", type=int, default=250)
     ap.add_argument("--save-every", type=int, default=1000)
     ap.add_argument("--bf16", action="store_true", help="CPU bf16 autocast if faster/supported")
@@ -274,8 +299,15 @@ def main():
     cfg = dict(seed=args.seed, seq=args.seq, **arch, dropout=args.dropout)
 
     if args.stage == "pretrain":
-        train_ids = torch.tensor(load_stream(DATA / "pretrain_train.txt", tok), dtype=torch.long)
-        valid_ids = torch.tensor(load_stream(DATA / "pretrain_valid.txt", tok), dtype=torch.long)
+        if args.train_tok:
+            train_ids = np.fromfile(args.train_tok, dtype=np.uint32)
+        else:
+            train_ids = torch.tensor(load_stream(DATA / "pretrain_train.txt", tok), dtype=torch.long)
+        if args.valid_tok:
+            valid_ids = torch.from_numpy(
+                np.fromfile(args.valid_tok, dtype=np.uint32).astype(np.int64))
+        else:
+            valid_ids = torch.tensor(load_stream(DATA / "pretrain_valid.txt", tok), dtype=torch.long)
         train_mask = None
         model = build_model(cfg, tok)
     else:

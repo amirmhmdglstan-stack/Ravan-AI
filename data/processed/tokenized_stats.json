@@ -1,0 +1,9 @@
+{
+  "tokenizer": "model/tok_v2_8k",
+  "seed": 1234,
+  "train_tokens": 40000016,
+  "train_docs": 379434,
+  "valid_tokens": 256627,
+  "valid_docs": 204,
+  "note": "docs are seed-shuffled before encoding; train stream is a random document subset capped at max_tokens"
+}

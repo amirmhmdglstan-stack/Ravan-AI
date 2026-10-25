@@ -1,0 +1,78 @@
+{
+  "note": "content-hash exact dedup; valid = every 100th unique doc by sha256; fawiki = Persian Wikipedia 2018 dump JSONL (CC BY-SA 4.0, Text-Mining/Persian-Wikipedia-Corpus); mizan = CC-BY-4.0 parallel corpus (each side kept as separate plain-text docs); ganjoor = public-domain classical verse only (AI summaries excluded); starter = project-authored.",
+  "sources": {
+    "fawiki-2018": {
+      "docs": 166965,
+      "chars": 401868353,
+      "dup": 8,
+      "short": 0,
+      "lang": {
+        "fa": 161304,
+        "en": 964,
+        "mixed": 4697,
+        "other": 0
+      }
+    },
+    "mizan-fa": {
+      "docs": 865836,
+      "chars": 57867626,
+      "dup": 1089,
+      "short": 154671,
+      "lang": {
+        "fa": 865831,
+        "en": 0,
+        "mixed": 5,
+        "other": 0
+      }
+    },
+    "mizan-en": {
+      "docs": 654742,
+      "chars": 53872547,
+      "dup": 3000,
+      "short": 363854,
+      "lang": {
+        "fa": 0,
+        "en": 654742,
+        "mixed": 0,
+        "other": 0
+      }
+    },
+    "ganjoor-pd": {
+      "docs": 24150,
+      "chars": 21852596,
+      "dup": 69,
+      "short": 0,
+      "lang": {
+        "fa": 24150,
+        "en": 0,
+        "mixed": 0,
+        "other": 0
+      }
+    },
+    "starter": {
+      "docs": 39,
+      "chars": 9031,
+      "dup": 0,
+      "short": 0,
+      "lang": {
+        "fa": 32,
+        "en": 7,
+        "mixed": 0,
+        "other": 0
+      }
+    }
+  },
+  "raw_scan": {
+    "fawiki_docs": 166973,
+    "mizan": 1,
+    "ganjoor_poems": 24219,
+    "starter": 1
+  },
+  "toksample_bytes": {
+    "fawiki-2018": 30199366,
+    "mizan-fa": 5033207,
+    "mizan-en": 6039891,
+    "ganjoor-pd": 6558071,
+    "starter": 8601
+  }
+}

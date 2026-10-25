@@ -1,0 +1,16 @@
+{
+  "8192": {
+    "vocab_actual": 8192,
+    "bytes_per_token_probes": 4.67,
+    "bytes_per_token_corpus_fa": 5.374,
+    "bytes_per_token_corpus_en": 3.159,
+    "tokens_per_probe_word": 1.786
+  },
+  "16384": {
+    "vocab_actual": 16384,
+    "bytes_per_token_probes": 5.307,
+    "bytes_per_token_corpus_fa": 5.889,
+    "bytes_per_token_corpus_en": 3.646,
+    "tokens_per_probe_word": 1.571
+  }
+}
