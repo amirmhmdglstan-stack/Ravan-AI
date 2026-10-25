@@ -1,4 +1,10 @@
-torch==2.2.2
-numpy==1.26.4
-transformers==4.46.3
-tokenizers==0.20.3
+# Training environment actually used for the v2 pipeline (Python 3.11, CPU-only).
+# Measured 2026-10-25: torch 2.14.1 (cu130 wheel, CUDA unused: is_available()==False),
+# transformers 5.20.2, numpy 2.x. bf16 autocast measured SLOWER than fp32 on this CPU
+# (486 vs 1350 tok/s) — train in fp32.
+torch>=2.14
+numpy
+transformers>=5.0
+tokenizers
+safetensors
+gguf
