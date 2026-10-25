@@ -1,0 +1,21 @@
+=== [qwen3-1.7b-q4km] ===
+curl: (22) The requested URL returned error: 401
+resolved HF unsloth/Qwen3-1.7B-GGUF/Qwen3-1.7B-Q4_K_M.gguf
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1068  100  1068    0     0  23170      0 --:--:-- --:--:-- --:--:-- 23217
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  2 1056M    2 22.9M    0     0  21.0M      0  0:00:50  0:00:01  0:00:49 22.7M 35 1056M   35  373M    0     0   179M      0  0:00:05  0:00:02  0:00:03  186M 83 1056M   83  882M    0     0   286M      0  0:00:03  0:00:03 --:--:--  294M100 1056M  100 1056M    0     0   298M      0  0:00:03  0:00:03 --:--:--  305M
+downloaded qwen3-1.7b-q4km: 1107409472 bytes sha=b139949c5bd74937ad8ed8c8cf3d9ffb1e99c866c823204dc42c0d91fa181897
+chunks ok: 12 parts
+=== [qwen3-0.6b-q4km] ===
+curl: (22) The requested URL returned error: 401
+resolved HF unsloth/Qwen3-0.6B-GGUF/Qwen3-0.6B-Q4_K_M.gguf
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1064  100  1064    0     0  26193      0 --:--:-- --:--:-- --:--:-- 26600
+  0  378M    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  378M  100  378M    0     0   291M      0  0:00:01  0:00:01 --:--:--  412M
+downloaded qwen3-0.6b-q4km: 396705472 bytes sha=ac2d97712095a558e31573f62f466a3f9d93990898b0ec79d7c974c1780d524a
+chunks ok: 5 parts
+=== [llama-server-win-cpu] ===
+skip llama-server-win-cpu (chunks already present)
+=== done; failures: ===
