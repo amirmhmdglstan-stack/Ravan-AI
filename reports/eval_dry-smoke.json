@@ -1,0 +1,510 @@
+{
+  "tag": "dry-smoke",
+  "checkpoint": "model/sft_v2/dry/best",
+  "decode": {
+    "mode": "greedy",
+    "max_new_tokens": 48,
+    "chat_format": "v2"
+  },
+  "summary": {
+    "probes": 21,
+    "nonempty": 0,
+    "empty_or_whitespace": 21,
+    "repetitive": 0,
+    "looks_ok": 0,
+    "empty_rate": 1.0
+  },
+  "instruction_stream": {
+    "tokens": 591,
+    "nll_total": 3446.913,
+    "text_bytes": 2665,
+    "nll_per_byte": 1.2934,
+    "bits_per_byte": 1.866,
+    "ppl_per_token": 341.16,
+    "note": "ppl_per_token is only comparable within the SAME tokenizer; nll_per_byte/bits_per_byte are comparable across tokenizers."
+  },
+  "tokenizer_health": {
+    "roundtrip": true,
+    "vocab": 8192
+  },
+  "samples": [
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 1,
+      "category": "iranian_casual",
+      "prompt": "سلام، خوبی؟ امروزت چطور بود؟",
+      "formatted_prompt": "<|user|>\nسلام، خوبی؟ امروزت چطور بود؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.03,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 2,
+      "category": "persian_explain",
+      "prompt": "فرق آب‌وهوا و هوا چیه؟",
+      "formatted_prompt": "<|user|>\nفرق آب‌وهوا و هوا چیه؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 3,
+      "category": "persian_grammar",
+      "prompt": "در نوشتار معیار، می خواهم را چطور می‌نویسیم؟",
+      "formatted_prompt": "<|user|>\nدر نوشتار معیار، می خواهم را چطور می‌نویسیم؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 4,
+      "category": "english_conversation",
+      "prompt": "Hi! What do you like to do in your free time?",
+      "formatted_prompt": "<|user|>\nHi! What do you like to do in your free time?\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 5,
+      "category": "translation",
+      "prompt": "ترجمه‌ی طبیعی «دلم برایت تنگ شده» به انگلیسی چیه؟",
+      "formatted_prompt": "<|user|>\nترجمه‌ی طبیعی «دلم برایت تنگ شده» به انگلیسی چیه؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 6,
+      "category": "school_math",
+      "prompt": "اگر ۴۰ تا از ۵۰ سؤال را درست جواب بدهم، چند درصد می‌شود؟",
+      "formatted_prompt": "<|user|>\nاگر ۴۰ تا از ۵۰ سؤال را درست جواب بدهم، چند درصد می‌شود؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 7,
+      "category": "science",
+      "prompt": "چرا آسمان در روز معمولاً آبی دیده می‌شود؟",
+      "formatted_prompt": "<|user|>\nچرا آسمان در روز معمولاً آبی دیده می‌شود؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 8,
+      "category": "creative",
+      "prompt": "یک داستان دو جمله‌ای درباره‌ی یک گربه و ماه بنویس.",
+      "formatted_prompt": "<|user|>\nیک داستان دو جمله‌ای درباره‌ی یک گربه و ماه بنویس.\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 9,
+      "category": "reasoning",
+      "prompt": "آیا همبستگی به‌تنهایی ثابت می‌کند یک چیز علت چیز دیگر است؟",
+      "formatted_prompt": "<|user|>\nآیا همبستگی به‌تنهایی ثابت می‌کند یک چیز علت چیز دیگر است؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 10,
+      "category": "uncertainty",
+      "prompt": "پایتخت کشور خیالی زارمان چیست؟",
+      "formatted_prompt": "<|user|>\nپایتخت کشور خیالی زارمان چیست؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 11,
+      "category": "context",
+      "prompt": "اسم من چی بود؟",
+      "formatted_prompt": "<|user|>\nسلام، اسم من نازنین است.\n<|end|>\n<|assistant|>\nسلام نازنین!\n<|end|>\n<|user|>\nاسم من چی بود؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 12,
+      "category": "informal_spelling",
+      "prompt": "میشه یه چیزی بهم بگی که حالم خوب بشه؟",
+      "formatted_prompt": "<|user|>\nمیشه یه چیزی بهم بگی که حالم خوب بشه؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 13,
+      "category": "unicode_zwnj",
+      "prompt": "کلمه‌های «می‌روم» و «کتاب‌ها» را در یک جمله استفاده کن.",
+      "formatted_prompt": "<|user|>\nکلمه‌های «می‌روم» و «کتاب‌ها» را در یک جمله استفاده کن.\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 14,
+      "category": "multi_turn",
+      "prompt": "فصل معادله‌ها رو. یه مسئله بده حل کنم.",
+      "formatted_prompt": "<|user|>\nمن دارم برای امتحان ریاضی می‌خونم.\n<|end|>\n<|assistant|>\nآفرین، کمکت می‌کنم. کدام فصل رو می‌خونی؟\n<|end|>\n<|user|>\nفصل معادله‌ها رو. یه مسئله بده حل کنم.\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.03,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 15,
+      "category": "instruction_follow",
+      "prompt": "فقط و فقط چهار کلمه جواب بده: پایتخت فرانسه چیست؟",
+      "formatted_prompt": "<|user|>\nفقط و فقط چهار کلمه جواب بده: پایتخت فرانسه چیست؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 16,
+      "category": "clarification",
+      "prompt": "بهترین راه چیه؟",
+      "formatted_prompt": "<|user|>\nبهترین راه چیه؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.01,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 17,
+      "category": "english_explain",
+      "prompt": "Explain in simple English what a tokenizer does.",
+      "formatted_prompt": "<|user|>\nExplain in simple English what a tokenizer does.\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 18,
+      "category": "mixed_fa_en",
+      "prompt": "بهم بگو design review یعنی چی و توی جلسه چیکار می‌کنن؟",
+      "formatted_prompt": "<|user|>\nبهم بگو design review یعنی چی و توی جلسه چیکار می‌کنن؟\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 19,
+      "category": "creative_brainstorm",
+      "prompt": "سه اسم خلاقانه برای یه اپلیکیشن یادگیری زبان بده.",
+      "formatted_prompt": "<|user|>\nسه اسم خلاقانه برای یه اپلیکیشن یادگیری زبان بده.\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 20,
+      "category": "uncertainty2",
+      "prompt": "سهم من از جهان چقدره؟ جدی جواب بده.",
+      "formatted_prompt": "<|user|>\nسهم من از جهان چقدره؟ جدی جواب بده.\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    },
+    {
+      "gen_ids": [
+        4
+      ],
+      "kept_ids": [],
+      "raw_text": "<|end|>",
+      "answer": "",
+      "answer_stripped": "",
+      "stop_reason": "eos(<|end|>)",
+      "id": 21,
+      "category": "greeting_style",
+      "prompt": "سلام! من تازه اومدم اینجا. خودت رو معرفی کن.",
+      "formatted_prompt": "<|user|>\nسلام! من تازه اومدم اینجا. خودت رو معرفی کن.\n<|end|>\n<|assistant|>\n",
+      "chat_format": "v2",
+      "latency_s": 0.02,
+      "distinct1": 0.0,
+      "max_token_repeat": 0,
+      "empty": true,
+      "whitespace_only": true
+    }
+  ],
+  "continuations": [
+    {
+      "gen_ids": [
+        285,
+        510,
+        269,
+        18,
+        203,
+        4
+      ],
+      "kept_ids": [
+        285,
+        510,
+        269,
+        18,
+        203
+      ],
+      "raw_text": " و «د.\n<|end|>",
+      "answer": " و «د.\n",
+      "answer_stripped": "و «د.",
+      "stop_reason": "eos(<|end|>)",
+      "kind": "continuation",
+      "prompt": "در فارسی نیم‌فاصله",
+      "distinct1": 1.0,
+      "max_token_repeat": 1,
+      "empty": false
+    },
+    {
+      "gen_ids": [
+        424,
+        362,
+        477,
+        462,
+        87,
+        18,
+        203,
+        4
+      ],
+      "kept_ids": [
+        424,
+        362,
+        477,
+        462,
+        87,
+        18,
+        203
+      ],
+      "raw_text": " to the pars.\n<|end|>",
+      "answer": " to the pars.\n",
+      "answer_stripped": "to the pars.",
+      "stop_reason": "eos(<|end|>)",
+      "kind": "continuation",
+      "prompt": "The capital of France is",
+      "distinct1": 1.0,
+      "max_token_repeat": 1,
+      "empty": false
+    }
+  ]
+}
