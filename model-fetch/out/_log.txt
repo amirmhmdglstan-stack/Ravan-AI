@@ -82,3 +82,52 @@ RESOLVE_FAILED qwen306-tok-cfg
 RESOLVE_FAILED qwen306-tok
 RESOLVE_FAILED qwen306-gen-cfg
 RESOLVE_FAILED qwen306-cfg
+=== [qwen306-spec] ===
+curl: (22) The requested URL returned error: 401
+RESOLVE_FAILED qwen306-spec
+=== [qwen306-tok-cfg] ===
+resolved HF Qwen/Qwen3-0.6B/tokenizer_config.json
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   254  100   254    0     0   3012      0 --:--:-- --:--:-- --:--:--  3023
+100  9732  100  9732    0     0   106k      0 --:--:-- --:--:-- --:--:--  106k
+downloaded qwen306-tok-cfg: 9732 bytes sha=d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101
+chunks ok: 1 parts
+=== [qwen306-tok] ===
+resolved HF Qwen/Qwen3-0.6B/tokenizer.json
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  1172  100  1172    0     0  12978      0 --:--:-- --:--:-- --:--:-- 13022
+  0 10.8M    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 10.8M  100 10.8M    0     0  11.8M      0 --:--:-- --:--:-- --:--:-- 21.5M
+downloaded qwen306-tok: 11422654 bytes sha=aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4
+chunks ok: 1 parts
+=== [qwen306-gen-cfg] ===
+resolved HF Qwen/Qwen3-0.6B/generation_config.json
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   256  100   256    0     0   2991      0 --:--:-- --:--:-- --:--:--  2976
+100   239  100   239    0     0   2656      0 --:--:-- --:--:-- --:--:--  2656
+downloaded qwen306-gen-cfg: 239 bytes sha=2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2
+chunks ok: 1 parts
+=== [qwen306-cfg] ===
+resolved HF Qwen/Qwen3-0.6B/config.json
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   234  100   234    0     0   2447      0 --:--:-- --:--:-- --:--:--  2463
+100   726  100   726    0     0   7211      0 --:--:-- --:--:-- --:--:--  7211
+downloaded qwen306-cfg: 726 bytes sha=660db3b73d788119c04535e48cf9be5f55bc3100841a718637ae695b442f27dd
+chunks ok: 1 parts
+=== [qwen306-fp-weights] ===
+skip qwen306-fp-weights (chunks already present); ensuring release asset exists
+=== [qwen3-1.7b-q4km] ===
+skip qwen3-1.7b-q4km (chunks already present); ensuring release asset exists
+=== [qwen25-1.5b-inst-q4km] ===
+skip qwen25-1.5b-inst-q4km (chunks already present); ensuring release asset exists
+=== [gemma3-1b-it-q4km] ===
+skip gemma3-1b-it-q4km (chunks already present); ensuring release asset exists
+=== [qwen3-0.6b-q4km] ===
+skip qwen3-0.6b-q4km (chunks already present); ensuring release asset exists
+=== [llama-server-win-cpu] ===
+skip llama-server-win-cpu (chunks already present); ensuring release asset exists
+=== done; failures: ===
+RESOLVE_FAILED qwen306-spec
