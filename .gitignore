@@ -18,3 +18,4 @@ data/processed/*.tok
 # model fetch: transient full downloads + locally assembled artifacts
 model-fetch/out/*.full
 model-fetch/assembled/
+uploads/

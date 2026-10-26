@@ -3,42 +3,52 @@
   "entries": [
     {
       "id": "qwen306-spec",
-      "filename": "qwen3-0.6b-instruct-special_tokens_map.json",
+      "filename": "qwen3-0.6b-special_tokens_map.json",
       "source": "hf",
-      "repo": "Qwen/Qwen3-0.6B-Instruct",
-      "fallback_repos": [],
+      "repo": "Qwen/Qwen3-0.6B",
+      "fallback_repos": [
+        "Qwen/Qwen3-0.6B-Instruct"
+      ],
       "filename_regex": "^special_tokens_map\\.json$"
     },
     {
       "id": "qwen306-tok-cfg",
-      "filename": "qwen3-0.6b-instruct-tokenizer_config.json",
+      "filename": "qwen3-0.6b-tokenizer_config.json",
       "source": "hf",
-      "repo": "Qwen/Qwen3-0.6B-Instruct",
-      "fallback_repos": [],
+      "repo": "Qwen/Qwen3-0.6B",
+      "fallback_repos": [
+        "Qwen/Qwen3-0.6B-Instruct"
+      ],
       "filename_regex": "^tokenizer_config\\.json$"
     },
     {
       "id": "qwen306-tok",
-      "filename": "qwen3-0.6b-instruct-tokenizer.json",
+      "filename": "qwen3-0.6b-tokenizer.json",
       "source": "hf",
-      "repo": "Qwen/Qwen3-0.6B-Instruct",
-      "fallback_repos": [],
+      "repo": "Qwen/Qwen3-0.6B",
+      "fallback_repos": [
+        "Qwen/Qwen3-0.6B-Instruct"
+      ],
       "filename_regex": "^tokenizer\\.json$"
     },
     {
       "id": "qwen306-gen-cfg",
-      "filename": "qwen3-0.6b-instruct-generation_config.json",
+      "filename": "qwen3-0.6b-generation_config.json",
       "source": "hf",
-      "repo": "Qwen/Qwen3-0.6B-Instruct",
-      "fallback_repos": [],
+      "repo": "Qwen/Qwen3-0.6B",
+      "fallback_repos": [
+        "Qwen/Qwen3-0.6B-Instruct"
+      ],
       "filename_regex": "^generation_config\\.json$"
     },
     {
       "id": "qwen306-cfg",
-      "filename": "qwen3-0.6b-instruct-config.json",
+      "filename": "qwen3-0.6b-config.json",
       "source": "hf",
-      "repo": "Qwen/Qwen3-0.6B-Instruct",
-      "fallback_repos": [],
+      "repo": "Qwen/Qwen3-0.6B",
+      "fallback_repos": [
+        "Qwen/Qwen3-0.6B-Instruct"
+      ],
       "filename_regex": "^config\\.json$"
     },
     {
